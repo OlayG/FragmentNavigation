@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- for more info on setting up go to:
+https://developer.android.com/guide/navigation/navigation-getting-started
+ -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstFragment">
+
+
+    <!--<editor-fold desc="DESTINATION ONE">-->
+    <!-- This allows us to define the screens of our application -->
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.fragmentnavigation.FirstFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_first">
+        <!--<editor-fold desc="ACTION">-->
+        <!-- This allows us to navigate to another Destination defined in this xml -->
+        <action
+            android:id="@+id/go_to_fragment_2"
+            app:destination="@id/secondFragment2" >
+            <!--<editor-fold desc="ARGUMENT">-->
+            <!-- This allows us to pass data to Destination the action is going to -->
+            <!-- go read here https://developer.android.com/guide/navigation/navigation-pass-data -->
+            <argument
+                android:name="greeting_message"
+                app:argType="string"
+                app:nullable="false"
+                android:defaultValue="Hello" />
+
+            <argument
+                android:name="num_count"
+                app:argType="integer"
+                app:nullable="false"
+                android:defaultValue="100" />
+            <!--</editor-fold>-->
+        </action>
+        <!--</editor-fold>-->
+    </fragment>
+    <!--</editor-fold>-->
+
+    <fragment
+        android:id="@+id/secondFragment2"
+        android:name="com.example.fragmentnavigation.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" >
+        <argument
+            android:name="greeting_message"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="person"
+            app:argType="com.example.fragmentnavigation.Person"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
